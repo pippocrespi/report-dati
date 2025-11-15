@@ -1,0 +1,168 @@
+ /* Stile base per mobile */
+ :root {
+   --radius-small: 8px;
+   --radius-medium: 12px;
+   --radius-large: 24px;
+   --blu-scuro: #004e98;
+   --rosso: #e63946;
+   --grigio-testo: #1f1f1f;
+   --grigio-chiarissimo: #f8f9fa;
+   --grigio-bordi: #c0c0c0;
+   --ombra-leggera: 0 1px 4px rgba(0, 0, 0, 0.18);
+ }
+
+ body {
+   font-family: 'Helvetica', sans-serif;
+   font-size: 1rem;
+   padding: 20px;
+   background-color: var(--grigio-chiarissimo);
+   margin: 0;
+ }
+
+ h1 {
+   text-align: center;
+   font-size: 26px;
+   margin-bottom: 1.5rem;
+   color: var(--grigio-testo);
+ }
+
+ /* Ultimo orario inserito */
+ #ultimoOrario {
+   text-align: center;
+   background-color: rgba(0, 78, 152, 0.15);
+   padding: 0.8rem 1rem;
+   border-radius: var(--radius-large);
+   margin-bottom: 1rem;
+   font-size: 18px;
+   color: var(--blu-scuro);
+   font-weight: bold;
+ }
+
+ /* Form principale */
+ form {
+   display: grid;
+   gap: 1.2rem;
+   max-width: 95%;
+   margin: auto;
+   background: white;
+   padding: 20px;
+   border-radius: var(--radius-large);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+   border: 1px solid var(--grigio-bordi);
+ }
+
+ label {
+   display: flex;
+   flex-direction: column;
+   padding: 0.8rem;
+   margin-top: 0.5rem;
+   font-size: 22px;
+   color: var(--grigio-testo);
+ }
+
+ input,
+ select {
+   font-size: 20px;
+   background-color: white;
+   flex: 1;
+   padding: 12px;
+   border-radius: var(--radius-small);
+   border: 1px solid var(--grigio-bordi);
+   background-color: white;
+   margin: 12px 0px;
+   outline: none;
+ }
+
+ /*
+input:focus, select:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 119, 204, 0.3);
+}
+*/
+
+ /* Suggerimenti orari */
+ .suggestions {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.5rem;
+   margin: 12px 0px;
+ }
+
+ .suggestions span {
+   cursor: pointer;
+   flex: 1;
+   text-align: center;
+   background-color: white;
+   color: var(--blu-scuro);
+   border: 1px solid var(--blu-scuro);
+   padding: 10px 2px;
+   border-radius: var(--radius-small);
+   font-size: 16px;
+   transition: background 0.2s;
+ }
+
+ /*
+ .suggestions span:hover {
+   background-color: #005fa3;
+ }
+   */
+
+ /* Pulsanti pranzo/cena */
+ .checkbox-btn {
+   display: inline-block;
+   padding: 0.8rem 1.2rem;
+   border: 1px solid var(--blu-scuro);
+   border-radius: var(--radius-medium);
+   color: #004e98;
+   cursor: pointer;
+   font-size: 18px;
+   margin: 12px 0;
+   flex: 1;
+   transition: all 0.2s;
+ }
+
+ .centered {
+  text-align: center;
+  display: flex;
+ }
+
+ .checkbox-btn.active {
+   background-color: var(--blu-scuro);
+   color: white;
+ }
+
+ /* Pulsanti principali */
+ button {
+   padding: 15px;
+   margin: 12px 0;
+   font-size: 20px;
+   background-color: var(--blu-scuro);
+   color: white;
+   border: none;
+   font-weight: bold;
+   border-radius: var(--radius-medium);
+   cursor: pointer;
+   transition: background 0.2s;
+ }
+
+ /* Stato invio dati */
+ #status {
+   text-align: center;
+   margin-top: 1rem;
+   font-weight: bold;
+   font-size: 18px;
+   color: var(--blu-scuro);
+ }
+
+ /* Sezione PDF */
+ .pdf-section {
+   max-width: 500px;
+   margin: 2rem auto 1rem auto;
+   background: white;
+   padding: 1rem;
+   border-radius: var(--radius-large);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+   border: 1px solid var(--grigio-bordi);
+   display: grid;
+   gap: 1rem;
+ }

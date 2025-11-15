@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ore Lavoro Sofia</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <h1>Rilevazione Orari Sofia</h1>
+  <div id="ultimoOrario">Ultimo orario inserito: Caricamento...</div>
+
+  <form id="mealForm">
+    <label>Data ingresso
+      <input type="date" id="dataIngresso" name="dataIngresso" placeholder="Data entrata" required>
+    </label>
+
+    <label>Ora entrata
+      <div class="suggestions" id="entrataSuggerimenti">
+        <span data-target="oraEntrata" data-time="07:00">07:00</span>
+        <span data-target="oraEntrata" data-time="09:30">09:30</span>
+        <span data-target="oraEntrata" data-time="12:00">12:00</span>
+        <span data-target="oraEntrata" data-time="16:00">16:00</span>
+      </div>
+      <input type="time" id="oraEntrata" name="oraEntrata" placeholder="Ora entrata" required>
+    </label>
+
+    <label>Ora uscita
+      <div class="suggestions" id="uscitaSuggerimenti">
+        <span data-target="oraUscita" data-time="22:00">22:00</span>
+        <span data-target="oraUscita" data-time="22:30">22:30</span>
+        <span data-target="oraUscita" data-time="23:00">23:00</span>
+        <span data-target="oraUscita" data-time="23:30">23:30</span>
+      </div>
+      <input type="time" id="oraUscita" name="oraUscita" placeholder="Ora uscita" required>
+    </label>
+
+    <label>Hai Mangiato?
+      <div class="centered">
+        <span id="btnPranzo" class="checkbox-btn" style="margin-right: 6px;">Pranzo</span>
+        <span id="btnCena" class="checkbox-btn" style="margin-left: 6px;">Cena</span>
+      </div>
+    </label>
+    <button type="button" id="btnInvia">Invia</button>
+  </form>
+
+  <p id="status"></p>
+
+  <!-- PDF -->
+  <!-- Sezione Stampa PDF -->
+  <div class="pdf-section">
+    <label>Mese:
+      <select id="mese">
+        <option value="Gennaio">Gennaio</option>
+        <option value="Febbraio">Febbraio</option>
+        <option value="Marzo">Marzo</option>
+        <option value="Aprile">Aprile</option>
+        <option value="Maggio">Maggio</option>
+        <option value="Giugno">Giugno</option>
+        <option value="Luglio">Luglio</option>
+        <option value="Agosto">Agosto</option>
+        <option value="Settembre">Settembre</option>
+        <option value="Ottobre">Ottobre</option>
+        <option value="Novembre">Novembre</option>
+        <option value="Dicembre">Dicembre</option>
+      </select>
+    </label>
+
+    <label>Anno:
+      <select id="anno">
+        <option value="2025" selected>2025</option>
+        <option value="2026">2026</option>
+      </select>
+    </label>
+
+    <button type="button" id="btnPDF">Stampa PDF</button>
+  </div>
+
+
+  <script>
+    const status = document.getElementById("status");
+    const btnPranzo = document.getElementById("btnPranzo");
+    const btnCena = document.getElementById("btnCena");
+    let pranzo = false;
+    let cena = false;
+
+    // toggle pranzo/cena
+    btnPranzo.addEventListener("click", () => {
+      pranzo = !pranzo;
+      btnPranzo.classList.toggle("active", pranzo);
+    });
+    btnCena.addEventListener("click", () => {
+      cena = !cena;
+      btnCena.classList.toggle("active", cena);
+    });
+
+    // suggerimenti orari
+    document.querySelectorAll(".suggestions span").forEach(span => {
+      span.addEventListener("click", () => {
+        const targetId = span.dataset.target;
+        const time = span.dataset.time;
+        document.getElementById(targetId).value = time;
+      });
+    });
+
+    // setta automaticamente la data odierna
+    window.addEventListener("DOMContentLoaded", () => {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      let mm = today.getMonth() + 1;
+      let dd = today.getDate();
+      if (mm < 10) mm = "0" + mm;
+      if (dd < 10) dd = "0" + dd;
+      document.getElementById("dataIngresso").value = `${yyyy}-${mm}-${dd}`;
+    });
+
+    // All'inizio, crea un riferimento alla scritta "Ultimo orario inserito"
+    const ultimoOrario = document.getElementById("ultimoOrario");
+
+    // --- Mostra subito l'ultimo inserimento salvato in locale ---
+    window.addEventListener("DOMContentLoaded", () => {
+      const ultimo = localStorage.getItem("ultimoOrario");
+      if (ultimo) {
+        ultimoOrario.textContent = "Ultimo orario inserito: " + ultimo;
+      } else {
+        ultimoOrario.textContent = "Ultimo orario inserito: Caricamento...";
+      }
+    });
+
+    // invio dati
+    document.getElementById("btnInvia").addEventListener("click", () => {
+      const oraEntrata = document.getElementById("oraEntrata").value;
+      const oraUscita = document.getElementById("oraUscita").value;
+
+      // --- CONTROLLO OBBLIGO ORARI ---
+      if (!oraEntrata || !oraUscita) {
+        status.textContent = "❌ Inserisci sia l'orario di entrata che di uscita!";
+        return; // blocca l'invio
+      }
+
+      const formData = new FormData();
+      formData.append("dataIngresso", document.getElementById("dataIngresso").value);
+      formData.append("oraEntrata", document.getElementById("oraEntrata").value);
+      formData.append("oraUscita", document.getElementById("oraUscita").value);
+      formData.append("pranzo", pranzo);
+      formData.append("cena", cena);
+
+      fetch("https://script.google.com/macros/s/AKfycbx4DXbptx4wNr8Ez_ybrLkOVnloCSZ-j3Ae0aBuJrwQtsAWm1C3IglMNGQKRLThEIt3/exec", {
+        method: "POST",
+        body: formData
+      })
+        .then(r => r.json())
+        .then(res => {
+          if (res.success) {
+            status.textContent = "✅ Dati salvati nel foglio " + res.sheet;
+            pranzo = false; cena = false;
+            btnPranzo.classList.remove("active");
+            btnCena.classList.remove("active");
+            document.getElementById("mealForm").reset();
+            // reset data a oggi
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            let mm = today.getMonth() + 1;
+            let dd = today.getDate();
+            if (mm < 10) mm = "0" + mm;
+            if (dd < 10) dd = "0" + dd;
+            document.getElementById("dataIngresso").value = `${yyyy}-${mm}-${dd}`;
+
+            // --- SALVA IN LOCALE LA DATA INSERITA ---
+            const dataInserita = document.getElementById("dataIngresso").value;
+            const dataLocale = new Date(dataInserita);
+            const giornoFormattato = dataLocale.toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
+            localStorage.setItem("ultimoOrario", giornoFormattato);
+
+            // --- AGGIORNA LA SCRITTA ---
+            ultimoOrario.textContent = "Ultimo orario inserito: " + giornoFormattato;
+
+          } else {
+            status.textContent = "❌ Errore: " + res.error;
+          }
+        })
+        .catch(err => {
+          status.textContent = "❌ Errore di rete: " + err.message;
+        });
+    });
+
+    //scarica il pDF
+    document.getElementById("btnPDF").addEventListener("click", () => {
+      const mese = document.getElementById("mese").value;
+      const anno = document.getElementById("anno").value;
+      const scriptUrl = "https://script.google.com/macros/s/AKfycbx4DXbptx4wNr8Ez_ybrLkOVnloCSZ-j3Ae0aBuJrwQtsAWm1C3IglMNGQKRLThEIt3/exec";
+      window.open(`${scriptUrl}?mese=${encodeURIComponent(mese)}&anno=${encodeURIComponent(anno)}`, "_blank");
+    });
+
+  </script>
+</body>
+
+</html>

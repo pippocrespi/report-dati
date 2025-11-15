@@ -34,6 +34,10 @@ body {
     padding: var(--padding-body);
 }
 
+#status {
+    padding: 1rem;
+}
+
 /* Titoli */
 h1 {
     text-align: center;
@@ -112,6 +116,10 @@ button[type="submit"] {
     cursor: pointer;
     transition: background-color 0.2s;
     margin-top: 1rem;
+}
+
+.centrato {
+    text-align: center;
 }
 
 button[type="submit"]:hover {

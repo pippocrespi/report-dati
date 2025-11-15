@@ -4,198 +4,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ore Lavoro Sofia</title>
+<title>Report VDT</title>
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
-  <h1>Rilevazione Orari Sofia</h1>
-  <div id="ultimoOrario">Ultimo orario inserito: Caricamento...</div>
 
-  <form id="mealForm">
-    <label>Data ingresso
-      <input type="date" id="dataIngresso" name="dataIngresso" placeholder="Data entrata" required>
-    </label>
+<h1>Checklist Videoterminale</h1>
 
-    <label>Ora entrata
-      <div class="suggestions" id="entrataSuggerimenti">
-        <span data-target="oraEntrata" data-time="07:00">07:00</span>
-        <span data-target="oraEntrata" data-time="09:30">09:30</span>
-        <span data-target="oraEntrata" data-time="12:00">12:00</span>
-        <span data-target="oraEntrata" data-time="16:00">16:00</span>
-      </div>
-      <input type="time" id="oraEntrata" name="oraEntrata" placeholder="Ora entrata" required>
-    </label>
+<form id="checklist-form">
+  
+<div class="domanda">
+  <!-- 0. Informazioni generali -->
+<h2>0. Informazioni generali</h2>
 
-    <label>Ora uscita
-      <div class="suggestions" id="uscitaSuggerimenti">
-        <span data-target="oraUscita" data-time="22:00">22:00</span>
-        <span data-target="oraUscita" data-time="22:30">22:30</span>
-        <span data-target="oraUscita" data-time="23:00">23:00</span>
-        <span data-target="oraUscita" data-time="23:30">23:30</span>
-      </div>
-      <input type="time" id="oraUscita" name="oraUscita" placeholder="Ora uscita" required>
-    </label>
+<fieldset>
+    <legend>Sede</legend>
+    <select id="sede" name="sede" required>
+        <option value="">Seleziona una sede</option>
+        <option value="sede1">Assago Depuratore</option>
+        <option value="sede2">Sede 2</option>
+        <option value="sede3">Sede 3</option>
+        <option value="sede4">Sede 4</option>
+        <option value="sede5">Sede 5</option>
+        <option value="sede6">Sede 6</option>
+        <option value="sede7">Sede 7</option>
+        <option value="sede8">Sede 8</option>
+        <option value="sede9">Sede 9</option>
+        <option value="sede10">Sede 10</option>
+        <option value="sede11">Sede 11</option>
+        <option value="sede12">Sede 12</option>
+        <option value="sede13">Sede 13</option>
+        <option value="sede14">Sede 14</option>
+        <option value="sede15">Sede 15</option>
+        <option value="sede16">Sede 16</option>
+        <option value="sede17">Sede 17</option>
+        <option value="sede18">Sede 18</option>
+        <option value="sede19">Sede 19</option>
+        <option value="sede20">Sede 20</option>
+    </select>
+</fieldset>
 
-    <label>Hai Mangiato?
-      <div class="centered">
-        <span id="btnPranzo" class="checkbox-btn" style="margin-right: 6px;">Pranzo</span>
-        <span id="btnCena" class="checkbox-btn" style="margin-left: 6px;">Cena</span>
-      </div>
-    </label>
-    <button type="button" id="btnInvia">Invia</button>
-  </form>
+<fieldset>
+    <legend>Ufficio</legend>
+    <input type="text" id="ufficio" name="ufficio" placeholder="Inserire Ufficio" required>
+</fieldset>
 
-  <p id="status"></p>
+<fieldset>
+    <legend>Mansione</legend>
+    <input type="text" id="mansione" name="mansione" placeholder="Inserire Mansione" required>
+</fieldset>
 
-  <!-- PDF -->
-  <!-- Sezione Stampa PDF -->
-  <div class="pdf-section">
-    <label>Mese:
-      <select id="mese">
-        <option value="Gennaio">Gennaio</option>
-        <option value="Febbraio">Febbraio</option>
-        <option value="Marzo">Marzo</option>
-        <option value="Aprile">Aprile</option>
-        <option value="Maggio">Maggio</option>
-        <option value="Giugno">Giugno</option>
-        <option value="Luglio">Luglio</option>
-        <option value="Agosto">Agosto</option>
-        <option value="Settembre">Settembre</option>
-        <option value="Ottobre">Ottobre</option>
-        <option value="Novembre">Novembre</option>
-        <option value="Dicembre">Dicembre</option>
-      </select>
-    </label>
+<fieldset>
+    <legend>Numero Postazione</legend>
+    <input type="number" id="numero_postazione" name="numero_postazione" placeholder="Inserire numero postazione" min="1" required>
+</fieldset>
+</div>
 
-    <label>Anno:
-      <select id="anno">
-        <option value="2025" selected>2025</option>
-        <option value="2026">2026</option>
-      </select>
-    </label>
+    <!-- 1. SCHERMO -->
+    <h2>1. Schermo</h2>
 
-    <button type="button" id="btnPDF">Stampa PDF</button>
-  </div>
+    <fieldset>
+    <legend>La risoluzione dello schermo garantisce una buona definizione, una forma chiara, una grandezza sufficiente dei caratteri ed uno spazio adeguato tra essi.</legend>
+    <label><input type="radio" name="schermo1" value="yes"> ✅ Sì (conforme)</label>
+    <label><input type="radio" name="schermo1" value="partial"> ⚠️ Parziale (migliorabile)</label>
+    <label><input type="radio" name="schermo1" value="no"> ❌ No (non conforme)</label>
+    <label><input type="radio" name="schermo1" value="na"> ⛔ N.A. (Non applicabile)</label>
+  </fieldset>
 
 
-  <script>
-    const status = document.getElementById("status");
-    const btnPranzo = document.getElementById("btnPranzo");
-    const btnCena = document.getElementById("btnCena");
-    let pranzo = false;
-    let cena = false;
+    <fieldset>
+        <legend>L'immagine sullo schermo è stabile, esente da farfallamento, tremolio o da altre forme di instabilità.</legend>
+        <label><input type="radio" name="schermo2" value="yes"> ✅ Sì (conforme)</label>
+        <label><input type="radio" name="schermo2" value="partial"> ⚠️</label>
+        <label><input type="radio" name="schermo2" value="no"> ❌</label>
+        <label><input type="radio" name="schermo2" value="na"> ⛔</label>
+    </fieldset>
 
-    // toggle pranzo/cena
-    btnPranzo.addEventListener("click", () => {
-      pranzo = !pranzo;
-      btnPranzo.classList.toggle("active", pranzo);
-    });
-    btnCena.addEventListener("click", () => {
-      cena = !cena;
-      btnCena.classList.toggle("active", cena);
-    });
+    <fieldset>
+        <legend>La brillanza e/o il contrasto di luminanza tra i caratteri e lo sfondo dello schermo sono facilmente regolabili da parte dell'utilizzatore del videoterminale e facilmente adattabili alle condizioni ambientali.</legend>
+        <label><input type="radio" name="schermo3" value="yes"> ✅ Sì (conforme)</label>
+        <label><input type="radio" name="schermo3" value="partial"> ⚠️</label>
+        <label><input type="radio" name="schermo3" value="no"> ❌</label>
+        <label><input type="radio" name="schermo3" value="na"> ⛔</label>
+    </fieldset>
 
-    // suggerimenti orari
-    document.querySelectorAll(".suggestions span").forEach(span => {
-      span.addEventListener("click", () => {
-        const targetId = span.dataset.target;
-        const time = span.dataset.time;
-        document.getElementById(targetId).value = time;
-      });
-    });
+    <fieldset>
+        <legend>Lo schermo è orientabile ed inclinabile liberamente per adeguarsi facilmente alle esigenze dell'utilizzatore.</legend>
+        <label><input type="radio" name="schermo4" value="yes"> ✅ Sì (conforme)</label>
+        <label><input type="radio" name="schermo4" value="partial"> ⚠️</label>
+        <label><input type="radio" name="schermo4" value="no"> ❌</label>
+        <label><input type="radio" name="schermo4" value="na"> ⛔</label>
+    </fieldset>
 
-    // setta automaticamente la data odierna
-    window.addEventListener("DOMContentLoaded", () => {
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      let mm = today.getMonth() + 1;
-      let dd = today.getDate();
-      if (mm < 10) mm = "0" + mm;
-      if (dd < 10) dd = "0" + dd;
-      document.getElementById("dataIngresso").value = `${yyyy}-${mm}-${dd}`;
-    });
+    <fieldset>
+        <legend>È possibile utilizzare un sostegno separato per lo schermo o un piano regolabile.</legend>
+        <label><input type="radio" name="schermo5" value="yes"> ✅ Sì (conforme)</label>
+        <label><input type="radio" name="schermo5" value="partial"> ⚠️</label>
+        <label><input type="radio" name="schermo5" value="no"> ❌</label>
+        <label><input type="radio" name="schermo5" value="na"> ⛔</label>
+    </fieldset>
 
-    // All'inizio, crea un riferimento alla scritta "Ultimo orario inserito"
-    const ultimoOrario = document.getElementById("ultimoOrario");
+    <fieldset>
+        <legend>Sullo schermo non sono presenti riflessi e riverberi che possono causare disturbi all'utilizzatore durante lo svolgimento della propria attività.</legend>
+        <label><input type="radio" name="schermo6" value="yes"> ✅ Sì (conforme)</label>
+        <label><input type="radio" name="schermo6" value="partial"> ⚠️</label>
+        <label><input type="radio" name="schermo6" value="no"> ❌</label>
+        <label><input type="radio" name="schermo6" value="na"> ⛔</label>
+    </fieldset>
 
-    // --- Mostra subito l'ultimo inserimento salvato in locale ---
-    window.addEventListener("DOMContentLoaded", () => {
-      const ultimo = localStorage.getItem("ultimoOrario");
-      if (ultimo) {
-        ultimoOrario.textContent = "Ultimo orario inserito: " + ultimo;
-      } else {
-        ultimoOrario.textContent = "Ultimo orario inserito: Caricamento...";
-      }
-    });
+    <fieldset>
+        <legend>Lo schermo è posizionato di fronte all'operatore in maniera che, anche agendo su eventuali meccanismi di regolazione, lo spigolo superiore dello schermo è posto un pò più in basso dell'orizzontale che passa per gli occhi dell'operatore e ad una distanza degli occhi pari a circa 50-70 cm, per i posti di lavoro in cui va assunta preferenzialmente la posizione seduta.</legend>
+        <label><input type="radio" name="schermo7" value="yes"> ✅ Sì (conforme)</label>
+        <label><input type="radio" name="schermo7" value="partial"> ⚠️</label>
+        <label><input type="radio" name="schermo7" value="no"> ❌</label>
+        <label><input type="radio" name="schermo7" value="na"> ⛔</label>
+    </fieldset>
 
-    // invio dati
-    document.getElementById("btnInvia").addEventListener("click", () => {
-      const oraEntrata = document.getElementById("oraEntrata").value;
-      const oraUscita = document.getElementById("oraUscita").value;
 
-      // --- CONTROLLO OBBLIGO ORARI ---
-      if (!oraEntrata || !oraUscita) {
-        status.textContent = "❌ Inserisci sia l'orario di entrata che di uscita!";
-        return; // blocca l'invio
-      }
+    <!-- 2. Tastiera e dispositivi di input -->
+    <h2>2. Tastiera e dispositivi di input</h2>
 
-      const formData = new FormData();
-      formData.append("dataIngresso", document.getElementById("dataIngresso").value);
-      formData.append("oraEntrata", document.getElementById("oraEntrata").value);
-      formData.append("oraUscita", document.getElementById("oraUscita").value);
-      formData.append("pranzo", pranzo);
-      formData.append("cena", cena);
+    <fieldset>
+        <legend>La tastiera è separata dallo schermo e regolabile?</legend>
+        <label><input type="radio" name="tastiera1" value="yes"> ✅</label>
+        <label><input type="radio" name="tastiera1" value="partial"> ⚠️</label>
+        <label><input type="radio" name="tastiera1" value="no"> ❌</label>
+        <label><input type="radio" name="tastiera1" value="na"> ⛔</label>
+    </fieldset>
 
-      fetch("https://script.google.com/macros/s/AKfycbx4DXbptx4wNr8Ez_ybrLkOVnloCSZ-j3Ae0aBuJrwQtsAWm1C3IglMNGQKRLThEIt3/exec", {
-        method: "POST",
-        body: formData
-      })
-        .then(r => r.json())
-        .then(res => {
-          if (res.success) {
-            status.textContent = "✅ Dati salvati nel foglio " + res.sheet;
-            pranzo = false; cena = false;
-            btnPranzo.classList.remove("active");
-            btnCena.classList.remove("active");
-            document.getElementById("mealForm").reset();
-            // reset data a oggi
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            let mm = today.getMonth() + 1;
-            let dd = today.getDate();
-            if (mm < 10) mm = "0" + mm;
-            if (dd < 10) dd = "0" + dd;
-            document.getElementById("dataIngresso").value = `${yyyy}-${mm}-${dd}`;
+    <fieldset>
+        <legend>La tastiera ha superficie opaca che evita i riflessi?</legend>
+        <label><input type="radio" name="tastiera2" value="yes"> ✅</label>
+        <label><input type="radio" name="tastiera2" value="partial"> ⚠️</label>
+        <label><input type="radio" name="tastiera2" value="no"> ❌</label>
+        <label><input type="radio" name="tastiera2" value="na"> ⛔</label>
+    </fieldset>
 
-            // --- SALVA IN LOCALE LA DATA INSERITA ---
-            const dataInserita = document.getElementById("dataIngresso").value;
-            const dataLocale = new Date(dataInserita);
-            const giornoFormattato = dataLocale.toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
-            localStorage.setItem("ultimoOrario", giornoFormattato);
+    <fieldset>
+        <legend>C'è spazio sufficiente davanti alla tastiera?</legend>
+        <label><input type="radio" name="tastiera3" value="yes"> ✅</label>
+        <label><input type="radio" name="tastiera3" value="partial"> ⚠️</label>
+        <label><input type="radio" name="tastiera3" value="no"> ❌</label>
+        <label><input type="radio" name="tastiera3" value="na"> ⛔</label>
+    </fieldset>
 
-            // --- AGGIORNA LA SCRITTA ---
-            ultimoOrario.textContent = "Ultimo orario inserito: " + giornoFormattato;
+    <fieldset>
+        <legend>Il mouse è facilmente raggiungibile e con spazio adeguato?</legend>
+        <label><input type="radio" name="tastiera4" value="yes"> ✅</label>
+        <label><input type="radio" name="tastiera4" value="partial"> ⚠️</label>
+        <label><input type="radio" name="tastiera4" value="no"> ❌</label>
+        <label><input type="radio" name="tastiera4" value="na"> ⛔</label>
+    </fieldset>
 
-          } else {
-            status.textContent = "❌ Errore: " + res.error;
-          }
-        })
-        .catch(err => {
-          status.textContent = "❌ Errore di rete: " + err.message;
-        });
-    });
 
-    //scarica il pDF
-    document.getElementById("btnPDF").addEventListener("click", () => {
-      const mese = document.getElementById("mese").value;
-      const anno = document.getElementById("anno").value;
-      const scriptUrl = "https://script.google.com/macros/s/AKfycbx4DXbptx4wNr8Ez_ybrLkOVnloCSZ-j3Ae0aBuJrwQtsAWm1C3IglMNGQKRLThEIt3/exec";
-      window.open(`${scriptUrl}?mese=${encodeURIComponent(mese)}&anno=${encodeURIComponent(anno)}`, "_blank");
-    });
+    <!-- 3. Piano di lavoro -->
+    <h2>3. Piano di lavoro</h2>
 
-  </script>
+    <fieldset>
+        <legend>La superficie del tavolo è a basso riflesso e adeguata?</legend>
+        <label><input type="radio" name="piano1" value="yes"> ✅</label>
+        <label><input type="radio" name="piano1" value="partial"> ⚠️</label>
+        <label><input type="radio" name="piano1" value="no"> ❌</label>
+        <label><input type="radio" name="piano1" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>È disponibile un leggio porta-documenti stabile e regolabile?</legend>
+        <label><input type="radio" name="piano2" value="yes"> ✅</label>
+        <label><input type="radio" name="piano2" value="partial"> ⚠️</label>
+        <label><input type="radio" name="piano2" value="no"> ❌</label>
+        <label><input type="radio" name="piano2" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Lo spazio sotto il tavolo consente libertà di movimento?</legend>
+        <label><input type="radio" name="piano3" value="yes"> ✅</label>
+        <label><input type="radio" name="piano3" value="partial"> ⚠️</label>
+        <label><input type="radio" name="piano3" value="no"> ❌</label>
+        <label><input type="radio" name="piano3" value="na"> ⛔</label>
+    </fieldset>
+
+
+    <!-- 4. Sedia -->
+    <h2>4. Sedia</h2>
+
+    <fieldset>
+        <legend>La sedia è stabile, girevole e regolabile?</legend>
+        <label><input type="radio" name="sedia1" value="yes"> ✅</label>
+        <label><input type="radio" name="sedia1" value="partial"> ⚠️</label>
+        <label><input type="radio" name="sedia1" value="no"> ❌</label>
+        <label><input type="radio" name="sedia1" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Lo schienale è regolabile e sostiene la zona lombare?</legend>
+        <label><input type="radio" name="sedia2" value="yes"> ✅</label>
+        <label><input type="radio" name="sedia2" value="partial"> ⚠️</label>
+        <label><input type="radio" name="sedia2" value="no"> ❌</label>
+        <label><input type="radio" name="sedia2" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Disponibili poggiapiedi se necessari?</legend>
+        <label><input type="radio" name="sedia3" value="yes"> ✅</label>
+        <label><input type="radio" name="sedia3" value="partial"> ⚠️</label>
+        <label><input type="radio" name="sedia3" value="no"> ❌</label>
+        <label><input type="radio" name="sedia3" value="na"> ⛔</label>
+    </fieldset>
+
+
+    <!-- 5. Ambiente -->
+    <h2>5. Ambiente</h2>
+
+    <fieldset>
+        <legend>Lo spazio di lavoro consente libertà di movimento?</legend>
+        <label><input type="radio" name="ambiente1" value="yes"> ✅</label>
+        <label><input type="radio" name="ambiente1" value="partial"> ⚠️</label>
+        <label><input type="radio" name="ambiente1" value="no"> ❌</label>
+        <label><input type="radio" name="ambiente1" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>L'illuminazione è adeguata e senza abbagliamenti?</legend>
+        <label><input type="radio" name="ambiente2" value="yes"> ✅</label>
+        <label><input type="radio" name="ambiente2" value="partial"> ⚠️</label>
+        <label><input type="radio" name="ambiente2" value="no"> ❌</label>
+        <label><input type="radio" name="ambiente2" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Sono considerate finestre, pareti chiare e riflessi?</legend>
+        <label><input type="radio" name="ambiente3" value="yes"> ✅</label>
+        <label><input type="radio" name="ambiente3" value="partial"> ⚠️</label>
+        <label><input type="radio" name="ambiente3" value="no"> ❌</label>
+        <label><input type="radio" name="ambiente3" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Le finestre hanno dispositivi per attenuare la luce?</legend>
+        <label><input type="radio" name="ambiente4" value="yes"> ✅</label>
+        <label><input type="radio" name="ambiente4" value="partial"> ⚠️</label>
+        <label><input type="radio" name="ambiente4" value="no"> ❌</label>
+        <label><input type="radio" name="ambiente4" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>La rumorosità non disturba?</legend>
+        <label><input type="radio" name="ambiente5" value="yes"> ✅</label>
+        <label><input type="radio" name="ambiente5" value="partial"> ⚠️</label>
+        <label><input type="radio" name="ambiente5" value="no"> ❌</label>
+        <label><input type="radio" name="ambiente5" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Temperatura, umidità e ricambio aria sono confortevoli?</legend>
+        <label><input type="radio" name="ambiente6" value="yes"> ✅</label>
+        <label><input type="radio" name="ambiente6" value="partial"> ⚠️</label>
+        <label><input type="radio" name="ambiente6" value="no"> ❌</label>
+        <label><input type="radio" name="ambiente6" value="na"> ⛔</label>
+    </fieldset>
+
+
+    <!-- 6. Attrezzature -->
+    <h2>6. Attrezzature</h2>
+
+    <fieldset>
+        <legend>Avete un PC portatile a disposizione?</legend>
+        <label><input type="radio" name="attrezzature1" value="yes"> ✅</label>
+        <label><input type="radio" name="attrezzature1" value="partial"> ⚠️</label>
+        <label><input type="radio" name="attrezzature1" value="no"> ❌</label>
+        <label><input type="radio" name="attrezzature1" value="na"> ⛔</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Avete tastiera, mouse esterni e supporto per portatile?</legend>
+        <label><input type="radio" name="attrezzature2" value="yes"> ✅</label>
+        <label><input type="radio" name="attrezzature2" value="partial"> ⚠️</label>
+        <label><input type="radio" name="attrezzature2" value="no"> ❌</label>
+        <label><input type="radio" name="attrezzature2" value="na"> ⛔</label>
+    </fieldset>
+
+
+    <!-- INVIO -->
+    <button type="submit">Invia</button>
+
+</form>
+
 </body>
+
 
 </html>

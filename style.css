@@ -1,168 +1,151 @@
- /* Stile base per mobile */
  :root {
-   --radius-small: 8px;
-   --radius-medium: 12px;
-   --radius-large: 24px;
-   --blu-scuro: #004e98;
-   --rosso: #e63946;
-   --grigio-testo: #1f1f1f;
-   --grigio-chiarissimo: #f8f9fa;
-   --grigio-bordi: #c0c0c0;
-   --ombra-leggera: 0 1px 4px rgba(0, 0, 0, 0.18);
- }
+    /* COLORI */
+    --primary-color: #1e40af;
+    --primary-hover-color: #1e3a8a;
+    --background-color: #f4f6f8;
+    --form-background: #fff;
+    --fieldset-background: #f9fafb;
+    --fieldset-border: #d1d5db;
+    --text-color: #333;
+    --legend-color: #1e40af;
+    --fieldset-hover-bg: #eff6ff;
+    --fieldset-hover-border: #93c5fd;
 
- body {
-   font-family: 'Helvetica', sans-serif;
-   font-size: 1rem;
-   padding: 20px;
-   background-color: var(--grigio-chiarissimo);
-   margin: 0;
- }
+    /* FONT SIZE */
+    --font-size-base: 0.95rem;
+    --font-size-h1: 2rem;
+    --font-size-h2: 1.2rem;
 
- h1 {
-   text-align: center;
-   font-size: 26px;
-   margin-bottom: 1.5rem;
-   color: var(--grigio-testo);
- }
-
- /* Ultimo orario inserito */
- #ultimoOrario {
-   text-align: center;
-   background-color: rgba(0, 78, 152, 0.15);
-   padding: 0.8rem 1rem;
-   border-radius: var(--radius-large);
-   margin-bottom: 1rem;
-   font-size: 18px;
-   color: var(--blu-scuro);
-   font-weight: bold;
- }
-
- /* Form principale */
- form {
-   display: grid;
-   gap: 1.2rem;
-   max-width: 95%;
-   margin: auto;
-   background: white;
-   padding: 20px;
-   border-radius: var(--radius-large);
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-   border: 1px solid var(--grigio-bordi);
- }
-
- label {
-   display: flex;
-   flex-direction: column;
-   padding: 0.8rem;
-   margin-top: 0.5rem;
-   font-size: 22px;
-   color: var(--grigio-testo);
- }
-
- input,
- select {
-   font-size: 20px;
-   background-color: white;
-   flex: 1;
-   padding: 12px;
-   border-radius: var(--radius-small);
-   border: 1px solid var(--grigio-bordi);
-   background-color: white;
-   margin: 12px 0px;
-   outline: none;
- }
-
- /*
-input:focus, select:focus {
-  border-color: #0077cc;
-  box-shadow: 0 0 5px rgba(0, 119, 204, 0.3);
+    /* SPACING */
+    --padding-body: 1rem;
+    --padding-form: 1.5rem 0.2rem;
+    --padding-fieldset: 1.5rem 0.5rem;
+    --padding-input: 0.5rem 0.7rem;
+    --margin-bottom-fieldset: 1rem;
+    --border-radius: 8px;
 }
-*/
 
- /* Suggerimenti orari */
- .suggestions {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 0.5rem;
-   margin: 12px 0px;
- }
+/* Stile generale del body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: var(--padding-body);
+}
 
- .suggestions span {
-   cursor: pointer;
-   flex: 1;
-   text-align: center;
-   background-color: white;
-   color: var(--blu-scuro);
-   border: 1px solid var(--blu-scuro);
-   padding: 10px 2px;
-   border-radius: var(--radius-small);
-   font-size: 16px;
-   transition: background 0.2s;
- }
+/* Titoli */
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: var(--font-size-h1);
+}
 
- /*
- .suggestions span:hover {
-   background-color: #005fa3;
- }
-   */
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid #dbeafe;
+    padding-bottom: 0.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: var(--font-size-h2);
+}
 
- /* Pulsanti pranzo/cena */
- .checkbox-btn {
-   display: inline-block;
-   padding: 0.8rem 1.2rem;
-   border: 1px solid var(--blu-scuro);
-   border-radius: var(--radius-medium);
-   color: #004e98;
-   cursor: pointer;
-   font-size: 18px;
-   margin: 12px 0;
-   flex: 1;
-   transition: all 0.2s;
- }
+/* Form */
+form {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--form-background);
+    padding: var(--padding-form);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
 
- .centered {
-  text-align: center;
-  display: flex;
- }
+/* Fieldset */
+fieldset {
+    border: 1px solid var(--fieldset-border);
+    border-radius: var(--border-radius);
+    padding: var(--padding-fieldset);
+    margin-bottom: var(--margin-bottom-fieldset);
+    background-color: var(--fieldset-background);
+}
 
- .checkbox-btn.active {
-   background-color: var(--blu-scuro);
-   color: white;
- }
+legend {
+    font-weight: 600;
+    padding: 0 0.5rem;
+    color: var(--legend-color);
+}
 
- /* Pulsanti principali */
- button {
-   padding: 15px;
-   margin: 12px 0;
-   font-size: 20px;
-   background-color: var(--blu-scuro);
-   color: white;
-   border: none;
-   font-weight: bold;
-   border-radius: var(--radius-medium);
-   cursor: pointer;
-   transition: background 0.2s;
- }
+/* Label e input */
+label {
+    display: block;
+    margin: 0.3rem 0;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+}
 
- /* Stato invio dati */
- #status {
-   text-align: center;
-   margin-top: 1rem;
-   font-weight: bold;
-   font-size: 18px;
-   color: var(--blu-scuro);
- }
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: var(--padding-input);
+    margin-top: 0.3rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #cbd5e1;
+    font-size: var(--font-size-base);
+    box-sizing: border-box;
+}
 
- /* Sezione PDF */
- .pdf-section {
-   max-width: 500px;
-   margin: 2rem auto 1rem auto;
-   background: white;
-   padding: 1rem;
-   border-radius: var(--radius-large);
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-   border: 1px solid var(--grigio-bordi);
-   display: grid;
-   gap: 1rem;
- }
+input[type="radio"] {
+    margin-right: 0.4rem;
+    transform: scale(1.1);
+}
+
+/* Pulsante invio */
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.7rem 1.5rem;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* Sezione informazioni generali compatta */
+.info-generali {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-generali .form-group {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    .info-generali .form-group {
+        flex: 1 1 100%;
+    }
+}
+
+/* Miglioramenti estetici per radio label */
+label input[type="radio"] + span {
+    margin-left: 0.3rem;
+}
+
+/* Evidenziazione hover sui fieldset */
+fieldset:hover {
+    border-color: var(--fieldset-hover-border);
+    background-color: var(--fieldset-hover-bg);
+    transition: 0.3s;
+}

@@ -1,7 +1,7 @@
 {
-  "name": "Ore Lavoro Sofia",
-  "short_name": "Lavoro Sofia",
-  "description": "App per gestire e visualizzare le ore di lavoro",
+  "name": "Report Video Terminali",
+  "short_name": "Report VDT",
+  "description": "App per inviare i Report sui VD",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#004e98",

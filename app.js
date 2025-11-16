@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('checklist-form');
     const statusDiv = document.getElementById('status');
 
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxb6uVei5iKbJbZ-EM7ZGzecJXP3Vk0Pl3uhOV0ENK-WC9smlOC1eOx-yEJ6frJFvDz/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkG2BqUK0orFxj6xWK__4NlLbUqxuq_Z8X1CvjzdR0mhASlWyjW4202kHNcFl06vYL/exec';
 
     function updateStatus(message, type) {
         statusDiv.textContent = message;

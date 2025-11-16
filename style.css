@@ -158,3 +158,43 @@ fieldset:hover {
     background-color: var(--fieldset-hover-bg);
     transition: 0.3s;
 }
+
+/* Nasconde il brutto input file predefinito */
+#foto {
+    display: none; 
+}
+
+/* Rende la <label> un pulsante carino */
+.file-upload-label {
+    display: block;
+    padding: 15px;
+    border: 1px solid var(--legend-color); /* Un blu carino */
+    color: var(--legend-color);
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer; /* Cambia il cursore a "mano" */
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Cambia colore quando ci passi sopra */
+.file-upload-label:hover {
+    background-color: var(--legend-color);
+}
+
+/* Stile per il contenitore dell'anteprima */
+.preview-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Stile per l'immagine di anteprima (nascosta all'inizio) */
+#foto-preview {
+    max-width: 100%; /* L'immagine non uscirà dai bordi */
+    max-height: 300px; /* Altezza massima */
+    border-radius: 8px;
+    display: none; /* INIZIALMENTE NASCOSTA */
+    margin-left: auto;
+    margin-right: auto;
+}

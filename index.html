@@ -310,10 +310,18 @@
       <label><input type="radio" name="attrezzature2" value="⛔ N.A. (Non applicabile)"> ⛔ N.A. (Non applicabile)</label>
     </fieldset>
 
+    </fieldset>
+
     <fieldset>
       <legend>Allega Foto</legend>
+      <label class="file-upload-label" for="foto">
+        📷 Clicca per Scattare o Selezionare
+        <input type="file" id="foto" name="foto" accept="image/*" capture="camera">
+      </label>
 
-      <input type="file" id="foto" name="foto" accept="image/*" capture="camera">
+      <div class="preview-container">
+        <img id="foto-preview" src="" alt="Anteprima della foto">
+      </div>
 
     </fieldset>
 

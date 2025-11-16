@@ -1,22 +1,10 @@
-// REGISTRAZIONE SERVICE WORKER
-// ==========================================================
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js')
-      .then(registration => {
-        console.log('Service Worker registrato con successo:', registration);
-      })
-      .catch(error => {
-        console.log('Registrazione Service Worker fallita:', error);
-      });
-  });
-}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('checklist-form');
     const statusDiv = document.getElementById('status');
 
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkG2BqUK0orFxj6xWK__4NlLbUqxuq_Z8X1CvjzdR0mhASlWyjW4202kHNcFl06vYL/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyl5v2T4jwQWygACXHRuewPFEGAot35shOIv8QfKwAwW1TxBZcvYn1rtyzQVM0i-xh-/exec';
 
     function updateStatus(message, type) {
         statusDiv.textContent = message;

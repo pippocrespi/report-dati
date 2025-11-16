@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('checklist-form');
-    const statusDiv = document.getElementById('status'); 
+    const statusDiv = document.getElementById('status');
 
-    // ⚠️ SOSTITUISCI QUESTO CON L'URL COMPLETO COPIATO DA GOOGLE APPS SCRIPT!
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeJqB5g6Isv8k_2_0P5EjUEaVbaAj-6uOPDXo61dKmHItNGgems4O1bNwwUYqLc0R0/exec'; 
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyxRo8x_WW5stRKQEasUnbiUn3Oe39FIDQRlpuAdWr330RHbnQVBavYTRB3_4U7d6z2/exec';
 
     function updateStatus(message, type) {
         statusDiv.textContent = message;
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         // Verifica la presenza dei campi critici per il routing
         if (!document.getElementById('sede').value || !document.getElementById('numero_postazione').value) {
@@ -26,15 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: formData 
+                body: formData
             });
 
-            const result = await response.json(); 
+            const result = await response.json();
 
             if (result && result.result === 'Success!') {
                 updateStatus('✅ Dati inviati con successo! Il foglio è stato aggiornato.', 'success');
                 // Puoi decidere di resettare o meno qui:
                 // form.reset(); 
+                // 1. Salva il valore attuale della sede
+                const sedeSalvata = document.getElementById('sede').value;
+
+                // 2. Resetta l'intero form (cancella tutti gli altri campi)
+                form.reset();
+
+                // 3. Ripristina il valore della sede
+                document.getElementById('sede').value = sedeSalvata;
             } else {
                 updateStatus(`❌ Errore durante l'invio: ${result.message || 'Errore sconosciuto'}`, 'error');
                 console.error('Apps Script Response:', result);

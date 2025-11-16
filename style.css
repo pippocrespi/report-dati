@@ -4,7 +4,7 @@
     --primary-hover-color: #1e3a8a;
     --background-color: #f4f6f8;
     --form-background: #fff;
-    --fieldset-background: #f9fafb;
+    --fieldset-background: white;
     --fieldset-border: #d1d5db;
     --text-color: #333;
     --legend-color: #1e40af;
@@ -12,13 +12,13 @@
     --fieldset-hover-border: #93c5fd;
 
     /* FONT SIZE */
-    --font-size-base: 0.95rem;
+    --font-size-base: 1rem;
     --font-size-h1: 2rem;
     --font-size-h2: 1.2rem;
 
     /* SPACING */
-    --padding-body: 1rem;
-    --padding-form: 1.5rem 0.2rem;
+    --padding-body: 0.5rem;
+    --padding-form: 1.5rem 0.5rem;
     --padding-fieldset: 1.5rem 0.5rem;
     --padding-input: 0.5rem 0.7rem;
     --margin-bottom-fieldset: 1rem;
@@ -76,6 +76,7 @@ fieldset {
 
 legend {
     font-weight: 600;
+    font-size: var(--font-size-base);
     padding: 0 0.5rem;
     color: var(--legend-color);
 }

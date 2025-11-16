@@ -1,9 +1,9 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     // Cambiamo in ?v=5 (o v=6, v=7... ogni volta)
-    navigator.serviceWorker.register('./service-worker.js?v=5') 
+    navigator.serviceWorker.register('./service-worker.js?v=1') 
       .then(registration => {
-        console.log('Service Worker (v5) registrato:', registration);
+        console.log('Service Worker (v1) registrato:', registration);
       })
       .catch(error => {
         console.log('Registrazione Service Worker fallita:', error);

@@ -181,6 +181,7 @@ fieldset:hover {
 /* Cambia colore quando ci passi sopra */
 .file-upload-label:hover {
     background-color: var(--legend-color);
+    color: white;
 }
 
 /* Stile per il contenitore dell'anteprima */
@@ -198,3 +199,38 @@ fieldset:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Seleziona tutti gli 'h2' all'interno del form con ID 'checklist-form' */
+#checklist-form h2 {
+  
+  /* La proprietà magica per "incollare" l'elemento */
+  position: sticky;
+
+  
+  /* Definisce a quale distanza dal bordo superiore deve bloccarsi */
+  top: 0;
+
+  /* * !! FONDAMENTALE !!
+   * Devi dare un colore di sfondo solido,
+   * altrimenti il testo che scorre sotto si vedrà attraverso.
+   */
+  background-color: white; /* O il colore di sfondo che preferisci */
+  
+  /* * Assicura che il titolo rimanga sempre sopra
+   * gli altri elementi (come i fieldset) quando scorrono.
+   */
+  z-index: 10;
+
+  /* Miglioramenti opzionali per un look più pulito */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Aggiunge una leggera ombra per staccare */
+  margin-left: -0.5rem;  /* Tira l'elemento a sinistra */
+  margin-right: -0.5rem; /* Tira l'elemento a destra */
+  
+  /* 2. Dobbiamo ri-aggiungere quel padding (0.5rem) 
+     al padding interno per non spostare il testo.
+     Usiamo calc() per sommarlo ai 30px che già avevi. */
+  padding-left: calc(30px + 0.5rem);
+  padding-right: calc(30px + 0.5rem);
+  
+}
+

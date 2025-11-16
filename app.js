@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('checklist-form');
     const statusDiv = document.getElementById('status');
 
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyxRo8x_WW5stRKQEasUnbiUn3Oe39FIDQRlpuAdWr330RHbnQVBavYTRB3_4U7d6z2/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxb6uVei5iKbJbZ-EM7ZGzecJXP3Vk0Pl3uhOV0ENK-WC9smlOC1eOx-yEJ6frJFvDz/exec';
 
     function updateStatus(message, type) {
         statusDiv.textContent = message;
@@ -35,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Puoi decidere di resettare o meno qui:
                 // form.reset(); 
                 // 1. Salva il valore attuale della sede
-                const sedeSalvata = document.getElementById('sede').value;
+            //    const sedeSalvata = document.getElementById('sede').value;
 
                 // 2. Resetta l'intero form (cancella tutti gli altri campi)
-                form.reset();
+            //    form.reset();
 
                 // 3. Ripristina il valore della sede
-                document.getElementById('sede').value = sedeSalvata;
+            //    document.getElementById('sede').value = sedeSalvata;
             } else {
                 updateStatus(`❌ Errore durante l'invio: ${result.message || 'Errore sconosciuto'}`, 'error');
                 console.error('Apps Script Response:', result);

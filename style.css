@@ -1,222 +1,245 @@
  :root {
-    /* COLORI */
-    --primary-color: #1e40af;
-    --primary-hover-color: #1e3a8a;
-    --background-color: #f4f6f8;
-    --form-background: #fff;
-    --fieldset-background: white;
-    --fieldset-border: #d1d5db;
-    --text-color: #333;
-    --legend-color: #1e40af;
-    --fieldset-hover-bg: #eff6ff;
-    --fieldset-hover-border: #93c5fd;
+     /* COLORI */
+     --primary-color: #1e40af;
+     --primary-hover-color: #1e3a8a;
+     --background-color: #f4f6f8;
+     --form-background: #fff;
+     --fieldset-background: white;
+     --fieldset-border: #d1d5db;
+     --text-color: #333;
+     --legend-color: #1e40af;
+     --fieldset-hover-bg: #eff6ff;
+     --fieldset-hover-border: #93c5fd;
 
-    /* FONT SIZE */
-    --font-size-base: 1rem;
-    --font-size-h1: 2rem;
-    --font-size-h2: 1.2rem;
+     /* FONT SIZE */
+     --font-size-base: 1rem;
+     --font-size-h1: 2rem;
+     --font-size-h2: 1.2rem;
 
-    /* SPACING */
-    --padding-body: 0.5rem;
-    --padding-form: 1.5rem 0.5rem;
-    --padding-fieldset: 1.5rem 0.5rem;
-    --padding-input: 0.5rem 0.7rem;
-    --margin-bottom-fieldset: 1rem;
-    --border-radius: 8px;
-}
+     /* SPACING */
+     --padding-body: 0.5rem;
+     --padding-form: 1.5rem 0.5rem;
+     --padding-fieldset: 1.5rem 0.5rem;
+     --padding-input: 0.5rem 0.7rem;
+     --margin-bottom-fieldset: 1rem;
+     --border-radius: 8px;
+ }
 
-/* Stile generale del body */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: var(--padding-body);
-}
+ /* Stile generale del body */
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background-color: var(--background-color);
+     color: var(--text-color);
+     margin: 0;
+     padding: var(--padding-body);
+ }
 
-#status {
-    padding: 1rem;
-}
+ #status {
+     padding: 1rem;
+ }
 
-/* Titoli */
-h1 {
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-size: var(--font-size-h1);
-}
+ /* Titoli */
+ h1 {
+     text-align: center;
+     color: var(--primary-color);
+     margin-bottom: 1.5rem;
+     font-size: var(--font-size-h1);
+ }
 
-h2 {
-    color: var(--primary-color);
-    border-bottom: 2px solid #dbeafe;
-    padding-bottom: 0.3rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: var(--font-size-h2);
-}
+ h2 {
+     color: var(--primary-color);
+     border-bottom: 2px solid #dbeafe;
+     padding-bottom: 0.3rem;
+     margin-top: 2rem;
+     margin-bottom: 1rem;
+     font-size: var(--font-size-h2);
+ }
 
-/* Form */
-form {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: var(--form-background);
-    padding: var(--padding-form);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
+ /* Form */
+ form {
+     max-width: 900px;
+     margin: 0 auto;
+     background-color: var(--form-background);
+     padding: var(--padding-form);
+     border-radius: 12px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+ }
 
-/* Fieldset */
-fieldset {
+ /* Fieldset */
+ fieldset {
+     border: 1px solid var(--fieldset-border);
+     border-radius: var(--border-radius);
+     padding: var(--padding-fieldset);
+     margin-bottom: var(--margin-bottom-fieldset);
+     background-color: var(--fieldset-background);
+ }
+
+ legend {
+     font-weight: 600;
+     font-size: var(--font-size-base);
+     padding: 0 0.5rem;
+     color: var(--legend-color);
+ }
+
+ /* Label e input */
+ label {
+     display: block;
+     margin: 0.3rem 0;
+     font-size: var(--font-size-base);
+     cursor: pointer;
+ }
+
+ input[type="text"],
+ input[type="number"],
+ select {
+     width: 100%;
+     padding: var(--padding-input);
+     margin-top: 0.3rem;
+     border-radius: var(--border-radius);
+     border: 1px solid #cbd5e1;
+     font-size: var(--font-size-base);
+     box-sizing: border-box;
+ }
+
+ input[type="radio"] {
+     margin-right: 0.4rem;
+     transform: scale(1.1);
+ }
+
+ /* Pulsante invio */
+ button[type="submit"] {
+     background-color: var(--primary-color);
+     color: white;
+     border: none;
+     border-radius: var(--border-radius);
+     padding: 0.7rem 1.5rem;
+     font-size: var(--font-size-base);
+     cursor: pointer;
+     transition: background-color 0.2s;
+     margin-top: 1rem;
+ }
+
+ .centrato {
+     text-align: center;
+ }
+
+ button[type="submit"]:hover {
+     background-color: var(--primary-hover-color);
+ }
+
+ /* Sezione informazioni generali compatta */
+ .info-generali {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 1rem;
+     margin-bottom: 1.5rem;
+ }
+
+ .info-generali .form-group {
+     flex: 1 1 45%;
+     display: flex;
+     flex-direction: column;
+ }
+
+ @media (max-width: 600px) {
+     .info-generali .form-group {
+         flex: 1 1 100%;
+     }
+ }
+
+ /* Miglioramenti estetici per radio label */
+ label input[type="radio"]+span {
+     margin-left: 0.3rem;
+ }
+
+ /* Evidenziazione hover sui fieldset */
+ fieldset:hover {
+     border-color: var(--fieldset-hover-border);
+     background-color: var(--fieldset-hover-bg);
+     transition: 0.3s;
+ }
+
+ /* Nasconde il brutto input file predefinito */
+ #foto {
+     display: none;
+ }
+
+ /* Rende la <label> un pulsante carino */
+ .file-upload-label {
+     display: block;
+     padding: 15px;
+     border: 1px solid var(--legend-color);
+     /* Un blu carino */
+     color: var(--legend-color);
+     text-align: center;
+     border-radius: 8px;
+     cursor: pointer;
+     /* Cambia il cursore a "mano" */
+     font-weight: bold;
+     font-size: 16px;
+     transition: background-color 0.3s;
+ }
+
+ /* Cambia colore quando ci passi sopra */
+ .file-upload-label:hover {
+     background-color: var(--legend-color);
+     color: white;
+ }
+
+ /* Stile per il contenitore dell'anteprima */
+ .preview-container {
+     margin-top: 15px;
+     text-align: center;
+ }
+
+ /* Stile per l'immagine di anteprima (nascosta all'inizio) */
+ #foto-preview {
+     max-width: 100%;
+     /* L'immagine non uscirà dai bordi */
+     max-height: 300px;
+     /* Altezza massima */
+     border-radius: 8px;
+     display: none;
+     /* INIZIALMENTE NASCOSTA */
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ /* Seleziona tutti gli 'h2' all'interno del form con ID 'checklist-form' */
+ #checklist-form h2 {
+
+     /* La proprietà magica per "incollare" l'elemento */
+     position: sticky;
+
+     /* Definisce a quale distanza dal bordo superiore deve bloccarsi */
+     top: 0;
+
+     background-color: white;
+     /* O il colore di sfondo che preferisci */
+
+     z-index: 10;
+
+     /* Miglioramenti opzionali per un look più pulito */
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+     /* Aggiunge una leggera ombra per staccare */
+     margin-left: -0.5rem;
+     /* Tira l'elemento a sinistra */
+     margin-right: -0.5rem;
+     /* Tira l'elemento a destra */
+     padding: 1rem 0.5rem;
+ }
+
+ #note {
+     width: 100%;
+     /* Occupa tutta la larghezza */
+     box-sizing: border-box;
+     resize: none;
+     /* Disabilita il ridimensionamento manuale dell'utente */
+     overflow-y: hidden;
+     /* Nasconde la barra di scorrimento */
+ }
+
+ textarea {
+    border-radius: 10px;
     border: 1px solid var(--fieldset-border);
-    border-radius: var(--border-radius);
-    padding: var(--padding-fieldset);
-    margin-bottom: var(--margin-bottom-fieldset);
-    background-color: var(--fieldset-background);
-}
-
-legend {
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    padding: 0 0.5rem;
-    color: var(--legend-color);
-}
-
-/* Label e input */
-label {
-    display: block;
-    margin: 0.3rem 0;
-    font-size: var(--font-size-base);
-    cursor: pointer;
-}
-
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%;
-    padding: var(--padding-input);
-    margin-top: 0.3rem;
-    border-radius: var(--border-radius);
-    border: 1px solid #cbd5e1;
-    font-size: var(--font-size-base);
-    box-sizing: border-box;
-}
-
-input[type="radio"] {
-    margin-right: 0.4rem;
-    transform: scale(1.1);
-}
-
-/* Pulsante invio */
-button[type="submit"] {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    padding: 0.7rem 1.5rem;
-    font-size: var(--font-size-base);
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 1rem;
-}
-
-.centrato {
-    text-align: center;
-}
-
-button[type="submit"]:hover {
-    background-color: var(--primary-hover-color);
-}
-
-/* Sezione informazioni generali compatta */
-.info-generali {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.info-generali .form-group {
-    flex: 1 1 45%;
-    display: flex;
-    flex-direction: column;
-}
-
-@media (max-width: 600px) {
-    .info-generali .form-group {
-        flex: 1 1 100%;
-    }
-}
-
-/* Miglioramenti estetici per radio label */
-label input[type="radio"] + span {
-    margin-left: 0.3rem;
-}
-
-/* Evidenziazione hover sui fieldset */
-fieldset:hover {
-    border-color: var(--fieldset-hover-border);
-    background-color: var(--fieldset-hover-bg);
-    transition: 0.3s;
-}
-
-/* Nasconde il brutto input file predefinito */
-#foto {
-    display: none; 
-}
-
-/* Rende la <label> un pulsante carino */
-.file-upload-label {
-    display: block;
-    padding: 15px;
-    border: 1px solid var(--legend-color); /* Un blu carino */
-    color: var(--legend-color);
-    text-align: center;
-    border-radius: 8px;
-    cursor: pointer; /* Cambia il cursore a "mano" */
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-/* Cambia colore quando ci passi sopra */
-.file-upload-label:hover {
-    background-color: var(--legend-color);
-    color: white;
-}
-
-/* Stile per il contenitore dell'anteprima */
-.preview-container {
-    margin-top: 15px;
-    text-align: center;
-}
-
-/* Stile per l'immagine di anteprima (nascosta all'inizio) */
-#foto-preview {
-    max-width: 100%; /* L'immagine non uscirà dai bordi */
-    max-height: 300px; /* Altezza massima */
-    border-radius: 8px;
-    display: none; /* INIZIALMENTE NASCOSTA */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Seleziona tutti gli 'h2' all'interno del form con ID 'checklist-form' */
-#checklist-form h2 {
-  
-  /* La proprietà magica per "incollare" l'elemento */
-  position: sticky;
-
-  /* Definisce a quale distanza dal bordo superiore deve bloccarsi */
-  top: 0;
-
-  background-color: white; /* O il colore di sfondo che preferisci */
-  
-  z-index: 10;
-
-  /* Miglioramenti opzionali per un look più pulito */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Aggiunge una leggera ombra per staccare */
-  margin-left: -0.5rem;  /* Tira l'elemento a sinistra */
-  margin-right: -0.5rem; /* Tira l'elemento a destra */
-  padding: 1rem 0.5rem;
-}
-
+ }

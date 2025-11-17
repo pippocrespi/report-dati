@@ -310,8 +310,6 @@
       <label><input type="radio" name="attrezzature2" value="⛔ N.A. (Non applicabile)"> ⛔ N.A. (Non applicabile)</label>
     </fieldset>
 
-    </fieldset>
-
     <fieldset>
       <legend>Allega Foto</legend>
       <label class="file-upload-label" for="foto">
@@ -325,6 +323,10 @@
 
     </fieldset>
 
+    <fieldset>
+      <legend>Note</legend>
+      <textarea id="note" name="note" placeholder="Aggiungi note" rows="4"></textarea>
+    </fieldset>
 
     <!-- INVIO -->
     <div class="centrato">
@@ -335,6 +337,15 @@
   </form>
 
   <script src="app.js"></script>
+  <script>
+    const textarea = document.getElementById("note");
+
+    function autoResize() {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+    }
+    textarea.addEventListener('input', autoResize, false);
+  </script>
 </body>
 
 

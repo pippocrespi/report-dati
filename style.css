@@ -217,10 +217,6 @@ fieldset:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Aggiunge una leggera ombra per staccare */
   margin-left: -0.5rem;  /* Tira l'elemento a sinistra */
   margin-right: -0.5rem; /* Tira l'elemento a destra */
-  padding-left: calc(30px + 0.5rem);
-  padding-right: calc(30px + 0.5rem);
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  
+  padding: 1rem 0.5rem;
 }
 

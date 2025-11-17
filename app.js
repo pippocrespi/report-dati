@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fotoInput = document.getElementById('foto'); // Prendiamo l'input della foto
 
     // INCOLLA IL TUO NUOVO URL DI DEPLOY QUI
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxaOIolES7lvg5_9jbCvmze9vbk30tnRBnZeVmt7QW_1w-WFlF7TnMnAWjuQOcXh5I_/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzGuZpl4gXllVpCIGXGeP5g80nyOiiaKuTfX-dBJt3OhLPO1V3RiUAzw9XHjFIeT3ZL/exec';
 
     function updateStatus(message, type) {
         statusDiv.textContent = message;
